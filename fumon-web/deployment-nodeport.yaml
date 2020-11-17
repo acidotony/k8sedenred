@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fumon-web-dev
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fumon-web-dev
+  
+  template:
+    metadata:
+      labels:
+        app: fumon-web-dev
+    
+    spec:
+      containers:
+        - name: fumon-web-dev
+    
+          image: eardevacr01.azurecr.io/fumon:dev
+      ports:
+        - containerPort: 8100
+          env:
+        - name: TITLE
+          value: "Hello World Edenred Ar"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fumon-web-dev
+
+spec:
+  type: NodePort
+  ports:
+    - port: 8100
+      targetPort: 80
+      nodePort: 30100
+      protocol: TCP
+      name: http
+    - port: 443
+      targetPort: 443
+      nodePort: 30101
+      protocol: TCP
+      name: https
+  selector:
+    app: fumon-web-dev
