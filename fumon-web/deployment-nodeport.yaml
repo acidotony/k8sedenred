@@ -31,16 +31,15 @@ metadata:
   name: fumon-web-dev
   namespace: dev
 spec:
+  
   type: NodePort
   ports:
-    - port: 8100
+    - port: 80
       targetPort: 80
-      nodePort: 30100
       protocol: TCP
       name: http
     - port: 443
       targetPort: 443
-      nodePort: 30101
       protocol: TCP
       name: https
   selector:
