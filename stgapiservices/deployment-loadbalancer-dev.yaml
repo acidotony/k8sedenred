@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: stg-apiservices-dev  
-  namespace: dev
+  #namespace: dev
 spec:
   replicas: 2
   selector:
@@ -10,14 +10,14 @@ spec:
       app: stg-apiservices-dev
   template:
     metadata:
-      namespace: dev
+      #namespace: dev
       labels:
         app: stg-apiservices-dev
     spec:
       containers:
         - name: stg-apiservices-dev
           image: eardevacr01.azurecr.io/stgapiservices:v1.dev
-          namespace: dev
+          #namespace: dev
           ports:
             - containerPort: 80
 ---
@@ -25,7 +25,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: stg-apiservices-dev
-  namespace: dev
+  #namespace: dev
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "true"
 spec:
