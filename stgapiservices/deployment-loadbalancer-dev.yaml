@@ -16,8 +16,7 @@ spec:
     spec:
       containers:
       - name: stg-apiservices-dev
-        image: eardevacr01.azurecr.io/stgapiservices:v1.dev
-        namespace: dev
+        image: eardevacr01.azurecr.io/stgapiservices:v1.dev 
       ports:
         - containerPort: 80
           env:
