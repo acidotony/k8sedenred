@@ -13,6 +13,8 @@ spec:
     metadata:
       labels:
         app: fumon-web-dev
+        tier: front-end
+        env: dev
     
     spec:
       containers:
@@ -30,6 +32,10 @@ kind: Service
 metadata:
   name: fumon-web-dev
   namespace: dev
+  labels:
+        app: fumon-web-dev
+        tier: front-end
+        env: dev
 spec:
   
   type: NodePort

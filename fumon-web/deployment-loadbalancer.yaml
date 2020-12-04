@@ -19,7 +19,7 @@ spec:
         - containerPort: 8100
           env:
         - name: TITLE
-          value: "Hello World Edenred Ar"
+          value: "Fumon Web"
 ---
 apiVersion: v1
 kind: Service
