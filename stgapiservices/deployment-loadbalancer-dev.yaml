@@ -19,12 +19,12 @@ spec:
           image: eardevacr01.azurecr.io/stgapiservices:v1.dev
           namespace: dev
           resources:
-          requests:
-            cpu: 100m
-            memory: 128Mi
-          limits:
-            cpu: 250m
-            memory: 256Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
           ports:
             - containerPort: 80
 ---
