@@ -38,7 +38,7 @@ spec:
   type: LoadBalancer
   loadBalancerIP: 172.21.45.142
   ports:
-  - port: 80
-    targetPort: 8110
+  - port: 8110
+    targetPort: 80
   selector:
     app: stg-apiservices-dev
