@@ -17,7 +17,6 @@ spec:
       containers:
         - name: stg-apiservices-dev
           image: eardevacr01.azurecr.io/stgapiservices:v1.dev
-          #namespace: dev
           resources:
             requests:
               cpu: 100m
@@ -40,6 +39,6 @@ spec:
   loadBalancerIP: 172.21.45.142
   ports:
   - port: 80
-    targetPort: 80
+    targetPort: 8110
   selector:
     app: stg-apiservices-dev
