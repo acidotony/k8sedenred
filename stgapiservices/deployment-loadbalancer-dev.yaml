@@ -26,6 +26,11 @@ spec:
               memory: 256Mi
           ports:
             - containerPort: 80
+      strategy:
+        rollingUpdate:
+            maxSurge: 25%
+            maxUnavailable: 25%
+        type: RollingUpdate
 ---
 apiVersion: v1
 kind: Service
