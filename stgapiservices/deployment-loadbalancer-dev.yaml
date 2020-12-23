@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: stg-apiservices-dev
-          image: eardevacr01.azurecr.io/stgapiservices:$tag
+          image: eardevacr01.azurecr.io/stgapiservices:v1.#{Release.ReleaseId}
           resources:
             requests:
               cpu: 100m
