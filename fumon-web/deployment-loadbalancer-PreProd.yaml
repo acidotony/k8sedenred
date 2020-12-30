@@ -1,22 +1,25 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fumon-web-preprod  
-  namespace: preprod
+  name: fumon-web-dev  
+  namespace: dev
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: fumon-web-preprod
+      app: fumon-web-dev
   template:
     metadata:
-      namespace: preprod
+      namespace: dev
       labels:
-        app: fumon-web-preprod
+        app: fumon-web-dev
     spec:
       containers:
-        - name: fumon-web-preprod
-          image: eardevacr01.azurecr.io/fumon:preprod
+        - name: fumon-web-dev
+          image: eardevacr01.azurecr.io/fumon
+          volumeMounts:
+          - name: azure-file-share
+            mountPath: "/logs"
           resources:
             requests:
               cpu: 100m
@@ -26,25 +29,30 @@ spec:
               memory: 256Mi
           ports:
             - containerPort: 80
+      volumes:
+      - name: azure-file-share
+        persistentVolumeClaim:
+          claimName: fumon
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: fumon-web-preprod
-  namespace: preprod
+  name: fumon-web-dev
+  namespace: dev
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "true"
-    service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "ear-preprod-container1-subnet"
+    service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "ear-dev-container1-subnet"
 spec:
   type: LoadBalancer
+  # loadBalancerIP: 172.21.45.142
   ports:
-    - port: 8201
+    - port: 8101
       targetPort: 80
       protocol: TCP
       name: http
-    - port: 8202
+    - port: 8102
       targetPort: 443
       protocol: TCP
       name: https
   selector:
-    app: fumon-web-preprod
+    app: fumon-web-dev
