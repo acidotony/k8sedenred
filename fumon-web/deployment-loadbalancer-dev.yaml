@@ -4,7 +4,7 @@ metadata:
   name: fumon-web-dev  
   namespace: dev
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: fumon-web-dev
@@ -17,6 +17,9 @@ spec:
       containers:
         - name: fumon-web-dev
           image: eardevacr01.azurecr.io/fumon:dev
+          volumeMounts:
+          - name: azure-file-share
+            mountPath: "/logs"
           resources:
             requests:
               cpu: 100m
@@ -26,6 +29,10 @@ spec:
               memory: 256Mi
           ports:
             - containerPort: 80
+      volumes:
+      - name: azure-file-share
+        persistentVolumeClaim:
+          claimName: fumon
 ---
 apiVersion: v1
 kind: Service
