@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: fumon-web-dev
-          image: eardevacr01.azurecr.io/fumon:dev
+          image: eardevacr01.azurecr.io/fumon
           volumeMounts:
           - name: azure-file-share
             mountPath: "/logs"
