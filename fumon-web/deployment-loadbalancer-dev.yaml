@@ -19,7 +19,7 @@ spec:
           image: eardevacr01.azurecr.io/fumon
           volumeMounts:
           - name: azure-file-share
-            mountPath: "/app/logs"
+            mountPath: /logs
           resources:
             requests:
               cpu: 100m
