@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: helloworldear  
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: helloworldear
@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: helloworldear
-        image: eardevacr01.azurecr.io/helloworldear:v1.0.0
+        image: eardevacr01.azurecr.io/helloworldear
         resources:
           requests:
             cpu: 100m
