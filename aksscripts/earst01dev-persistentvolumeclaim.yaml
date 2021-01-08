@@ -10,4 +10,4 @@ spec:
   volumeName: earst01dev-pvdev01
   resources:
     requests:
-      storage: 5Gi
+      storage: 1Gi

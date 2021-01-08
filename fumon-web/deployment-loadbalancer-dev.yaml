@@ -17,9 +17,9 @@ spec:
       containers:
         - name: fumon-web-dev
           image: eardevacr01.azurecr.io/fumon
-          volumeMounts:
-          - name: fumonshare
-            mountPath: /logs
+          #volumeMounts:
+          #- name: fumonshare
+          #  mountPath: /logs
           resources:
             requests:
               cpu: 100m
@@ -29,10 +29,10 @@ spec:
               memory: 256Mi
           ports:
             - containerPort: 80
-      volumes:
-      - name: fumonshare
-        persistentVolumeClaim:
-          claimName: fumon
+      #volumes:
+      #- name: fumonshare
+      #  persistentVolumeClaim:
+      #    claimName: fumon
 ---
 apiVersion: v1
 kind: Service
