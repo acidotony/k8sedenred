@@ -7,7 +7,7 @@ spec:
   accessModes:
     - ReadWriteMany
   storageClassName: azurefile
-  volumeName: earst01dev-pvdev01
+  volumeName: pvdev01
   resources:
     requests:
       storage: 1Gi
