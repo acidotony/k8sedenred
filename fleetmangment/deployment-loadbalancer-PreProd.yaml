@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: fleetmng-internalapi-preprod
-          image: earpreprodacr01.azurecr.io/fleetmng-internalapi-preprod   
+          image: eardevacr01.azurecr.io/fleetmng   
 #          volumeMounts:
 #          - name: azure-file-share
 #            mountPath: "/logs"
@@ -28,7 +28,11 @@ spec:
               cpu: 250m
               memory: 256Mi
           ports:
-            - containerPort: 80
+            - containerPort: 443
+              hostPort: 443
+              name: https
+              protocol: TCP
+    
 #      volumes:
 #      - name: azure-file-share
 #        persistentVolumeClaim:
