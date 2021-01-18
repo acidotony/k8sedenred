@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fleetmng-webintegration-preprod  
+  namespace: preprod
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: fleetmng-webintegration-preprod
+  template:
+    metadata:
+      namespace: preprod
+      labels:
+        app: fleetmng-webintegration-preprod
+    spec:
+      containers:
+        - name: fleetmng-webintegration-preprod
+          image: eardevacr01.azurecr.io/fleetmngwebintegration 
+#          volumeMounts:
+#          - name: azure-file-share
+#            mountPath: "/logs"
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 250m
+              memory: 256Mi
+          ports:
+            - containerPort: 443
+              hostPort: 443
+              name: https
+              protocol: TCP
+    
+#      volumes:
+#      - name: azure-file-share
+#        persistentVolumeClaim:
+#         claimName: fleetmng-internalapi-preprod
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: fleetmng-webintegration-preprod
+  namespace: preprod
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+    service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "ear-dev-container1-subnet"
+spec:
+  type: LoadBalancer
+  loadBalancerIP: 172.21.45.146
+  ports:
+    - port: 8101
+      targetPort: 80
+      protocol: TCP
+      name: http
+    - port: 8102
+      targetPort: 443
+      protocol: TCP
+      name: https
+  selector:
+    app: fleetmng-webintegration-preprod
