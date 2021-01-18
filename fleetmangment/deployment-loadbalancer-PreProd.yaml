@@ -4,7 +4,7 @@ metadata:
   name: fleetmng-internalapi-preprod  
   namespace: preprod
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: fleetmng-internalapi-preprod
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: fleetmng-internalapi-preprod
-          image: eardevacr01.azurecr.io/fleetmng   
+          image: eardevacr01.azurecr.io/fleetmnginternalapi 
 #          volumeMounts:
 #          - name: azure-file-share
 #            mountPath: "/logs"
