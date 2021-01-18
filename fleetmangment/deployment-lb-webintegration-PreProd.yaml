@@ -48,7 +48,7 @@ metadata:
     service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "ear-dev-container1-subnet"
 spec:
   type: LoadBalancer
-  loadBalancerIP: 172.21.45.146
+  #loadBalancerIP: 172.21.45.146
   ports:
     - port: 8101
       targetPort: 80
