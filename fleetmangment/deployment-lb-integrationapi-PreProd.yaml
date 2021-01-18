@@ -50,11 +50,11 @@ spec:
   type: LoadBalancer
   # loadBalancerIP: 172.21.45.145
   ports:
-    - port: 8103
+    - port: 8101
       targetPort: 80
       protocol: TCP
       name: http
-    - port: 8104
+    - port: 8102
       targetPort: 443
       protocol: TCP
       name: https
