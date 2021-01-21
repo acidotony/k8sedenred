@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: helloworldear  
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: helloworldear
+  template:
+    metadata:
+      labels:
+        app: helloworldear
+    spec:
+      containers:
+      - name: helloworldear
+        image: earregistrya.azurecr.io/helloworldear
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 250m
+            memory: 256Mi
+        ports:
+        - containerPort: 8100
+        env:
+        - name: TITLE
+          value: "Hello World Edenred Ar"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: helloworldear
+  annotations:
+    service.beta.kubernetes.io/azure-load-balancer-internal: "true"
+spec:
+  type: LoadBalancer
+  #loadBalancerIP: 172.21.45.141
+  ports:
+  - port: 80
+  selector:
+    app: helloworldear
