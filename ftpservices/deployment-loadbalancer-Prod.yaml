@@ -1,23 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sftp01-prod 
+  name: sftp01-test 
   namespace: sanservices
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: sftp01-prod
+      app: sftp01-test
   template:
     metadata:
       namespace: sanservices
       labels:
-        app: sftp01-prod
+        app: sftp01-test
     spec:
       containers:
-        - name: sftp01-prod
+        - name: sftp01-test
           image: earregistrya.azurecr.io/atmozsftp:latest
-          command: ["asalad:test:1001"]
+          command: ["/bin/bash"]
+          args: ["asalad:test:1001"]
           volumeMounts:
           - name: ftpservices
             mountPath: "/home/asalad/upload"
@@ -38,11 +39,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: sftp01-prod
+  name: sftp01-test
   namespace: sanservices
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "true"
-    service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "ear-prod-eastus2-vnet"
+    service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "ear-prod-container1-subnet"
 spec:
   type: LoadBalancer
   # loadBalancerIP: 172.21.45.142
