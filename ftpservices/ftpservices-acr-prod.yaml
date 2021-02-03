@@ -14,13 +14,15 @@ properties:
       - name: TZ
         value: 'America/Argentina/Buenos_Aires'
       - name: PUBLIC_KEY
-        value: 
+        value: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDuDOtsxu3D6be+IiYLPdRKq79OkJqfoSXL09vScimGa414fSUZWnNOzvZPA4NPSB2cxyx3dA667HDvGmw12J/heEWWMzjzw2Sc4Mkko5rf73iTAqBs+zQt+CIRi5scqbD3DqgUaKMI51KY6K7y0KHbfjY5IPmvwJc1P3lXe3cxnMLuaeKqQlLSfLM8x7zuqpXnDYUlF9fIdHYbu0KNhNxPc8G630114P9wPxbW0a+D6dZsps0hwbnuLw0uKfibz74Aro1c3xsGmyvjCSaFegCCe4oixBwk++F/zY/R3ovccZdIu/CSy2ivV+nioIE3ofCDqIZWhoTjw4HXBD1etc+RbCnBUnYrdjwhBbd21eJWCMIcKBzI4XHjei24yUnV98YyCk+ZXBN96wj89KqSMMPOBsD/5uGR/K6AaEvb3vePJM4Q44kWHfOU+tlE5tcbNk5g4UGMYF2aMY7brF+06F++to6O7itJ4fX/snAALCT8VuzwHQCKzQ559UzfjQnViWBu37TRlETG76t4LRGu7v90H0rk8tMZY+K7/oBOKPMd/zayhc7dNUDhaB2LDb9lTiH/8SROeZ+M4fGbBMmXCKqnzHQgc9x4cIB6sxGgcdFT+l5KU62V/NX/1CGCK2AQFhKhhydexLZREczjrJsshLKkFp35Dg6VvQwvBUBjBSojww== lanet\anmachado@WLEARBUE1-00217'
+      - name: PUBLIC_KEY_FILE
+        value: '~/.ssh'
       - name: SUDO_ACCESS
         value: 'false'
       - name: PASSWORD_ACCESS
         value: 'true'
       - name: USER_PASSWORD
-        value: 'test'
+        value: 'Edenred2020!'
       - name: USER_NAME
         value: 'asalad'
       image: linuxserver/openssh-server:latest
@@ -31,7 +33,7 @@ properties:
           cpu: 1.0
           memoryInGB: 1.5
       volumeMounts:
-      - mountPath: /upload/
+      - mountPath: /config/upload/
         name: ftpservices
   osType: Linux
   restartPolicy: Always
