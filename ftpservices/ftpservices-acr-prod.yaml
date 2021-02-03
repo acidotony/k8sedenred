@@ -1,0 +1,52 @@
+apiVersion: '2019-12-01'
+location: eastus2
+name: sftp01-prod
+properties:
+  containers:
+  - name: sftp01-prod
+  
+    properties:
+      environmentVariables:
+      - name: PUID
+        value: '1000'
+      - name: PGID
+        value: '1000'
+      - name: TZ
+        value: 'America/Argentina/Buenos_Aires'
+      - name: PUBLIC_KEY
+        value: 
+      - name: SUDO_ACCESS
+        value: 'false'
+      - name: PASSWORD_ACCESS
+        value: 'true'
+      - name: USER_PASSWORD
+        value: 'test'
+      - name: USER_NAME
+        value: 'asalad'
+      image: linuxserver/openssh-server:latest
+      ports:
+      - port: 2222
+      resources:
+        requests:
+          cpu: 1.0
+          memoryInGB: 1.5
+      volumeMounts:
+      - mountPath: /upload/
+        name: ftpservices
+  osType: Linux
+  restartPolicy: Always
+  ipAddress:
+    type: Public
+    ports:
+      - port: 2222
+    dnsNameLabel: earsftp01services
+  #networkProfile:
+   # id: /subscriptions/02e5ade9-a6fc-4ff7-ab83-b3b6cedffbec/resourceGroups/ear-prod-network-rg/providers/Microsoft.Network/virtualNetworks/ear-prod-eastus2-vnet/subnets/ear-prod-web-subnet
+  volumes:
+  - name: ftpservices
+    azureFile:
+      sharename: ftpservices
+      storageAccountName: earst01dev
+      storageAccountKey: BwvQGZj6OPz2UubOmWeMmS+wDwfmumMzSjc4bjU4Lskgwym46L8Ob4il8g5jR+d2QeUpdSjXR2vTM2TE5dIF+g==
+tags: {}
+type: Microsoft.ContainerInstance/containerGroups
