@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fumon-web-dev  
-  namespace: dev
+  name: fumon-web-prod  
+  namespace: fumon
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: fumon-web-dev
+      app: fumon-web-prod
   template:
     metadata:
-      namespace: dev
+      namespace: fumon
       labels:
-        app: fumon-web-dev
+        app: fumon-web-prod
     spec:
       containers:
-        - name: fumon-web-dev
+        - name: fumon-web-prod
           image: eardevacr01.azurecr.io/fumon
           volumeMounts:
           - name: azure-file-share
@@ -37,7 +37,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: fumon-web-dev
+  name: fumon-web-prod
   namespace: dev
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "true"
@@ -55,4 +55,4 @@ spec:
       protocol: TCP
       name: https
   selector:
-    app: fumon-web-dev
+    app: fumon-web-prod
