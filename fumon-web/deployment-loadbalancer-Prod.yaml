@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: fumon-web-prod
-          image: eardevacr01.azurecr.io/fumonwebprod
+          image: earregistrya.azurecr.io/fumonwebprod
           volumeMounts:
           - name: azure-file-share
             mountPath: "/logs"
@@ -38,7 +38,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: fumon-web-prod
-  namespace: dev
+  namespace: fumon
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "true"
     service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "ear-dev-container1-subnet"
