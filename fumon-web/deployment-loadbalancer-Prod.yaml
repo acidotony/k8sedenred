@@ -41,7 +41,7 @@ metadata:
   namespace: fumon
   annotations:
     service.beta.kubernetes.io/azure-load-balancer-internal: "true"
-    service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "ear-dev-container1-subnet"
+    service.beta.kubernetes.io/azure-load-balancer-internal-subnet: "ear-prod-container1-subnet"
 spec:
   type: LoadBalancer
   # loadBalancerIP: 172.21.45.142
