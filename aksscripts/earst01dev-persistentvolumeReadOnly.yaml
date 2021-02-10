@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pvdev01-ro
+  namespace: sanservices
+spec:
+  #capacity:
+  #  storage: 1Gi
+  accessModes:
+    - ReadOnlyMany
+  storageClassName: azurefile
+  azureFile:
+    secretName: earst01dev-secret
+    shareName: pvdev01-ro
+    readOnly: false
+  mountOptions:
+  - dir_mode=0400
+  - file_mode=0400
+  - uid=1000
+  - gid=1000
+  - mfsymlinks
+  - nobrl

@@ -14,7 +14,7 @@ properties:
       - name: TZ
         value: 'America/Argentina/Buenos_Aires'
       - name: PUBLIC_KEY
-        value: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDuDOtsxu3D6be+IiYLPdRKq79OkJqfoSXL09vScimGa414fSUZWnNOzvZPA4NPSB2cxyx3dA667HDvGmw12J/heEWWMzjzw2Sc4Mkko5rf73iTAqBs+zQt+CIRi5scqbD3DqgUaKMI51KY6K7y0KHbfjY5IPmvwJc1P3lXe3cxnMLuaeKqQlLSfLM8x7zuqpXnDYUlF9fIdHYbu0KNhNxPc8G630114P9wPxbW0a+D6dZsps0hwbnuLw0uKfibz74Aro1c3xsGmyvjCSaFegCCe4oixBwk++F/zY/R3ovccZdIu/CSy2ivV+nioIE3ofCDqIZWhoTjw4HXBD1etc+RbCnBUnYrdjwhBbd21eJWCMIcKBzI4XHjei24yUnV98YyCk+ZXBN96wj89KqSMMPOBsD/5uGR/K6AaEvb3vePJM4Q44kWHfOU+tlE5tcbNk5g4UGMYF2aMY7brF+06F++to6O7itJ4fX/snAALCT8VuzwHQCKzQ559UzfjQnViWBu37TRlETG76t4LRGu7v90H0rk8tMZY+K7/oBOKPMd/zayhc7dNUDhaB2LDb9lTiH/8SROeZ+M4fGbBMmXCKqnzHQgc9x4cIB6sxGgcdFT+l5KU62V/NX/1CGCK2AQFhKhhydexLZREczjrJsshLKkFp35Dg6VvQwvBUBjBSojww== lanet\anmachado@WLEARBUE1-00217'
+        value: 'ssh-rsa AAAAB3NzaC1yc2EAAAABJQAAAQEAkCFSkAYtnlMiT3bDSP25UsdK9R7O4Fyw4Gw5J4FT5F4t8U3dBsVtYC1Bj/dXuTqtE+sTt1tY5t0QL4TaQrCJaIWOiQ7tleC3Et43GbdPdgIc1nYvDAtBzYDUE4ss3zZ11tW8Yz4F/bUOho8KCrSn7kKH60Hds5cEEWAYkoXkDtlqteoG0pffGIKJrCHjBZrIjJx1Su8769ST43Qxam2AqFNT4acwcdw73wqavNIEkn1gdOA/kWHUbp52kJ5HFSWEsm4e3bx5oJud7MU1J1p5S3WENOxg/5pbu0giIWJotRRQoIv+W6/0adLo7aMIuefUGq/we5jn1YOSgB9VlGkByw=='
       - name: PUBLIC_KEY_FILE
         value: '~/.ssh'
       - name: SUDO_ACCESS
@@ -35,6 +35,7 @@ properties:
       volumeMounts:
       - mountPath: /config/upload/
         name: ftpservices
+        readOnly: true
   osType: Linux
   restartPolicy: Always
   ipAddress:
@@ -49,6 +50,6 @@ properties:
     azureFile:
       sharename: ftpservices
       storageAccountName: earst01dev
-      storageAccountKey: ${storageAccountKey}
+      storageAccountKey: BwvQGZj6OPz2UubOmWeMmS+wDwfmumMzSjc4bjU4Lskgwym46L8Ob4il8g5jR+d2QeUpdSjXR2vTM2TE5dIF+g==
 tags: {}
 type: Microsoft.ContainerInstance/containerGroups
